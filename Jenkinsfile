@@ -1,7 +1,12 @@
 pipeline {
-    agent { docker { image 'python:3.7.2' } }
+    agent none
     stages {
         stage('build') {
+            agent {
+                docker {
+                    image 'python:3-alpine' 
+                } 
+            }
             steps {
                 sh 'pip install flask'
             }
@@ -10,9 +15,7 @@ pipeline {
             steps {
                 sh 'python test.py'
             }
-            post {
-                always {junit 'test-reports/*.xml'}
-            }
         }
     }
 }
+
