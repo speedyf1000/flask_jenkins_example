@@ -4,7 +4,7 @@ pipeline {
         stage('build') {
             agent {
                 docker {
-                    image 'python:3.9.7-bullseye' 
+                    image 'python:3.9.7-alpine' 
                 } 
             }
             steps {
